@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-
 var displayedButtons = ["Tiger Woods", "Greg Norman", "Phil Mickelson"]
 
 function displayImg() {
@@ -20,7 +19,7 @@ function displayImg() {
             var displayDiv = $("<div>");
             displayDiv.addClass("holder");
 
-            var image = $("<img>");
+            var image = $("<img  class='home-title'>");
             image.attr("src", response.data[j].images.original_still.url);
             image.attr("data-still", response.data[j].images.original_still.url);
             image.attr("data-animate", response.data[j].images.original.url);
@@ -38,7 +37,7 @@ function displayImg() {
     });
 }
 
-function renderButtons() {
+function buttons() {
     $("#display-buttons").empty();
 
     for (var i = 0; i < displayedButtons.length; i++) {
@@ -53,7 +52,7 @@ function renderButtons() {
 
 
 
-function imageChangeState() {
+function buttonschangeImage() {
 
     var state = $(this).attr("data-state");
     var animateImage = $(this).attr("data-animate");
@@ -76,14 +75,14 @@ $("#submitPress").on("click", function () {
     form.reset();
     displayedButtons.push(input);
 
-    renderButtons();
+    buttons();
 
     return false;
 })
 
-renderButtons();
+buttons();
 
 $(document).on("click", "#input", displayImg);
-$(document).on("click", ".gif", imageChangeState);
+$(document).on("click", ".gif", buttonschangeImage);
 
 });
